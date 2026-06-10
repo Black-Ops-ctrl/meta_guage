@@ -1,6 +1,16 @@
 // src/api/aifa_petrol_api.js
 
-const API_BASE_URL = 'http://84.16.235.111:2107/api';
+// Smart URL detection - Dono jagah kaam karega
+const getApiBaseUrl = () => {
+  // Agar localhost pe hai toh direct HTTP URL use karo
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    return 'http://84.16.235.111:2107/api';
+  }
+  // Vercel production pe proxy URL use karo
+  return '/api';
+};
+
+const API_BASE_URL = getApiBaseUrl();
 
 export const aifaPetrolAPI = {
   /**
@@ -16,6 +26,8 @@ export const aifaPetrolAPI = {
       if (startDate && endDate) {
         url += `?start_date=${startDate}&end_date=${endDate}`;
       }
+      
+      console.log('Fetching API:', url); // Debug ke liye
       
       const response = await fetch(url, {
         method: 'GET',
