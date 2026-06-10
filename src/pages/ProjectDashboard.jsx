@@ -424,7 +424,6 @@ function DateRangePicker({ onRangeChange, initialRange }) {
 
 // ─── PROJECT CARD ────────────────────────────────────────────────────────────
 function ProjectCard({ project, index, dailyData, startDate, endDate }) {
-  const isPositive = project.trend >= 0;
   const lineColor = getLineColor(project.type);
 
   return (
@@ -450,17 +449,6 @@ function ProjectCard({ project, index, dailyData, startDate, endDate }) {
               </span>
             </div>
           </div>
-          {isPositive ? (
-            <div className="flex items-center gap-0.5 text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
-              <ArrowUpRight className="w-3 h-3" />
-              <span className="text-[10px] font-bold">+{project.trend}%</span>
-            </div>
-          ) : (
-            <div className="flex items-center gap-0.5 text-red-600 bg-red-50 px-2 py-0.5 rounded-full">
-              <ArrowDownRight className="w-3 h-3" />
-              <span className="text-[10px] font-bold">{project.trend}%</span>
-            </div>
-          )}
         </div>
 
         <MiniChart
