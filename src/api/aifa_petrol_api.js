@@ -1,7 +1,7 @@
 // src/api/aifa_petrol_api.js
 
 // Smart URL detection - Dono jagah kaam karega
-const getApiBaseUrl = () => {
+  const getApiBaseUrl = () => {
   // Agar localhost pe hai toh direct HTTP URL use karo
   if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
     return 'http://84.16.235.111:2107/api';
